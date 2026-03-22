@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <main className="bg-background min-h-screen">
+    <main className="bg-background">
       <section className="mx-auto max-w-7xl px-4 py-8">
         <div className="flex animate-pulse flex-col gap-6">
           <div className="bg-background-subtle h-10 w-64 rounded" />

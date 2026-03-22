@@ -1,7 +1,7 @@
 import type { Hero } from '@/types/hero'
-import { REVALIDATE_TIME } from '@/constants/heroes'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
+const REVALIDATE_TIME = 3600
 
 export async function getHeroes(): Promise<Hero[]> {
   const res = await fetch(`${API_URL}`, {

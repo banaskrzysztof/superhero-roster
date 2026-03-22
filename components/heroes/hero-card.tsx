@@ -19,7 +19,7 @@ export function HeroCard({ hero }: HeroCardProps) {
             src={hero.image}
             alt={hero.name}
             fill
-            className="object-cover"
+            className="object-cover object-[center_25%]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
         </div>

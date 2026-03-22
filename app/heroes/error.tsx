@@ -21,7 +21,7 @@ export default function Error({
       <div className="mx-auto max-w-md text-center">
         <h1 className="text-foreground mb-4 text-4xl font-bold">Failed to load heroes</h1>
         <p className="text-foreground-muted mb-6">
-          We couldn&apos;t load the heroes data. Please try again.
+          We couldn't load the heroes data. Please try again.
         </p>
         <div className="flex justify-center gap-3">
           <Button onClick={reset}>Try again</Button>

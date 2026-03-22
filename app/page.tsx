@@ -20,7 +20,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   })
 
   return (
-    <main className="bg-background min-h-screen">
+    <main className="bg-background">
       <section className="mx-auto max-w-7xl px-4 py-8">
         <p className="text-foreground-muted mb-6">
           Browse and filter your favourite heroes and villains

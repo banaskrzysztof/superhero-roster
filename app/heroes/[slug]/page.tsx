@@ -29,11 +29,5 @@ export default async function HeroPage({ params }: PageProps) {
 
   if (!hero) notFound()
 
-  return (
-    <main className="bg-background min-h-screen">
-      <section className="mx-auto max-w-4xl px-4 py-8">
-        <HeroDetail hero={hero} />
-      </section>
-    </main>
-  )
+  return <HeroDetail hero={hero} />
 }

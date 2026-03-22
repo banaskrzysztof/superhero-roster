@@ -4,6 +4,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 import { useCallback } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import SearchIcon from '@/assets/icons/search.svg'
+import { Input } from '@/components/ui/input'
 
 export function SearchBar() {
   const router = useRouter()
@@ -33,7 +34,7 @@ export function SearchBar() {
         height={16}
         className="text-foreground-muted absolute top-1/2 left-3 -translate-y-1/2"
       />
-      <input
+      <Input
         type="search"
         defaultValue={searchParams.get('q') ?? ''}
         onChange={(e) => handleChange(e.target.value)}

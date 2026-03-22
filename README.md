@@ -131,16 +131,6 @@ export async function generateStaticParams() {
 
 **Implementation**:
 
-```typescript
-// utils/heroes.ts
-export async function getHeroes(): Promise<Hero[]> {
-  const res = await fetch(`${API_URL}`, {
-    next: { revalidate: 3600 }, // ISR with 1 hour revalidation
-  })
-  // ...
-}
-```
-
 ### Server Components (Default)
 
 **Used in**: Most pages and layouts
