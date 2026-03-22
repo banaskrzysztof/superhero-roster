@@ -16,7 +16,7 @@ export function useQueryParams() {
       }
       router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     },
-    [router, pathname, searchParams]
+    [router, pathname, searchParams],
   )
 
   const updateParam = useCallback(
@@ -29,7 +29,7 @@ export function useQueryParams() {
       }
       router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     },
-    [router, pathname, searchParams]
+    [router, pathname, searchParams],
   )
 
   const clearAll = useCallback(() => {

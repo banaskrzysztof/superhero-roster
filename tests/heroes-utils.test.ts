@@ -27,7 +27,7 @@ describe('Heroes Utils', () => {
         expect.any(String),
         expect.objectContaining({
           next: { revalidate: 3600 },
-        })
+        }),
       )
       expect(result).toEqual(mockHeroes.items)
     })
@@ -57,7 +57,7 @@ describe('Heroes Utils', () => {
         expect.stringContaining('/batman'),
         expect.objectContaining({
           cache: 'force-cache',
-        })
+        }),
       )
       expect(result).toEqual(mockHero)
     })

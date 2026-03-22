@@ -17,13 +17,13 @@ export default function Error({
   }, [error])
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background">
+    <main className="bg-background flex min-h-screen flex-col items-center justify-center">
       <div className="mx-auto max-w-md text-center">
-        <h1 className="mb-4 text-4xl font-bold text-foreground">Failed to load heroes</h1>
-        <p className="mb-6 text-foreground-muted">
-          We couldn't load the heroes data. Please try again.
+        <h1 className="text-foreground mb-4 text-4xl font-bold">Failed to load heroes</h1>
+        <p className="text-foreground-muted mb-6">
+          We couldn&apos;t load the heroes data. Please try again.
         </p>
-        <div className="flex gap-3 justify-center">
+        <div className="flex justify-center gap-3">
           <Button onClick={reset}>Try again</Button>
           <Link href={ROUTES.HOME}>
             <Button variant="secondary">Go home</Button>

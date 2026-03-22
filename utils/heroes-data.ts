@@ -1,0 +1,138 @@
+import type { Hero } from '@/types/hero'
+
+export const heroesData: Hero[] = [
+  {
+    slug: 'batman',
+    name: 'Batman',
+    score: 8.3,
+    type: 'hero',
+    universe: 'DC',
+    weakness: 'Joker',
+    aliases: ['Bruce Wayne', 'Dark Knight', 'Caped Crusader'],
+    powers: ['Strength', 'Speed', 'Intelligence'],
+    description:
+      'A billionaire vigilante who uses his intellect and physical prowess to fight crime in Gotham City.',
+    image: '/batman.svg',
+  },
+  {
+    slug: 'joker',
+    name: 'Joker',
+    score: 8.2,
+    type: 'villain',
+    universe: 'DC',
+    aliases: ['Clown Prince of Crime', 'Jack Napier'],
+    powers: ['Intelligence'],
+    description:
+      "Batman's greatest nemesis — a psychopathic criminal mastermind with a warped sense of humor.",
+    image: '/joker.svg',
+  },
+  {
+    slug: 'superman',
+    name: 'Superman',
+    score: 9.6,
+    type: 'hero',
+    universe: 'DC',
+    weakness: 'Lex Luthor',
+    aliases: ['Clark Kent', 'Man of Steel', 'Last Son of Krypton'],
+    powers: ['Strength', 'Speed'],
+    description:
+      "The last survivor of Krypton, blessed with extraordinary powers under Earth's yellow sun.",
+    image: '/superman.svg',
+  },
+  {
+    slug: 'gamora',
+    name: 'Gamora',
+    score: 8.4,
+    type: 'hero',
+    universe: 'Marvel',
+    aliases: ['Deadliest Woman in the Galaxy'],
+    powers: ['Strength', 'Speed'],
+    description:
+      'Adopted daughter of Thanos, turned guardian of the galaxy and fierce warrior for good.',
+    image: '/gamora.svg',
+  },
+  {
+    slug: 'thanos',
+    name: 'Thanos',
+    score: 9.9,
+    type: 'villain',
+    universe: 'Marvel',
+    aliases: ['Mad Titan'],
+    powers: ['Strength', 'Intelligence', 'Magic'],
+    description:
+      'A powerful cosmic warlord obsessed with balance, willing to destroy half of all life to achieve it.',
+    image: '/thanos.svg',
+  },
+  {
+    slug: 'wonder-woman',
+    name: 'Wonder Woman',
+    score: 8.7,
+    type: 'hero',
+    universe: 'DC',
+    aliases: ['Diana Prince', 'Princess of the Amazons'],
+    powers: ['Strength', 'Speed', 'Magic'],
+    description:
+      'An Amazonian warrior princess who fights for justice, love, and peace across the world.',
+    image: '/wonder-woman.svg',
+  },
+  {
+    slug: 'lex-luthor',
+    name: 'Lex Luthor',
+    score: 8.0,
+    type: 'villain',
+    universe: 'DC',
+    aliases: ['Alexander Luthor'],
+    powers: ['Intelligence'],
+    description:
+      "A ruthless billionaire genius and Superman's greatest adversary, driven by ego and ambition.",
+    image: '/lex-luthor.svg',
+  },
+  {
+    slug: 'aquaman',
+    name: 'Aquaman',
+    score: 3.5,
+    type: 'hero',
+    universe: 'DC',
+    aliases: ['Arthur Curry', 'King of Atlantis'],
+    powers: ['Strength', 'Speed'],
+    description:
+      'The ruler of Atlantis with the ability to communicate with sea life and survive extreme depths.',
+    image: '/aquaman.svg',
+  },
+  {
+    slug: 'thor',
+    name: 'Thor',
+    score: 9.2,
+    type: 'hero',
+    universe: 'Marvel',
+    aliases: ['God of Thunder', 'Son of Odin'],
+    powers: ['Strength', 'Magic'],
+    description:
+      'The Asgardian god of thunder, wielder of Mjolnir and protector of both Asgard and Earth.',
+    image: '/thor.svg',
+  },
+  {
+    slug: 'spiderman',
+    name: 'Spiderman',
+    score: 7.9,
+    type: 'hero',
+    universe: 'Marvel',
+    aliases: ['Peter Parker', 'Friendly Neighborhood Spider-Man'],
+    powers: ['Strength', 'Speed', 'Intelligence'],
+    description:
+      'A young scientist bitten by a radioactive spider, balancing everyday life with saving New York City.',
+    image: '/spiderman.svg',
+  },
+  {
+    slug: 'harley-quinn',
+    name: 'Harley Quinn',
+    score: 7.3,
+    type: 'villain',
+    universe: 'DC',
+    aliases: ['Harleen Quinzel', 'Clown Princess of Crime'],
+    powers: ['Strength', 'Intelligence'],
+    description:
+      'A former psychiatrist turned chaotic villain, known for her unpredictability and loyalty to Joker.',
+    image: '/harley-quinn.svg',
+  },
+]

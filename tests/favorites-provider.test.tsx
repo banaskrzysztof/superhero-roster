@@ -50,11 +50,11 @@ describe('FavoritesProvider', () => {
     act(() => {
       result.current.toggleFavorite('batman')
     })
-    
+
     act(() => {
       result.current.toggleFavorite('superman')
     })
-    
+
     act(() => {
       result.current.toggleFavorite('wonder-woman')
     })
