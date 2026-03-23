@@ -22,12 +22,12 @@ export function ThemeToggle() {
       {isDark ? (
         <>
           <SunIcon width={16} height={16} />
-          <span>Light mode</span>
+          <span className="hidden sm:inline">Light mode</span>
         </>
       ) : (
         <>
           <MoonIcon width={16} height={16} />
-          <span>Dark mode</span>
+          <span className="hidden sm:inline">Dark mode</span>
         </>
       )}
     </button>

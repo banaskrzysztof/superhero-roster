@@ -13,7 +13,7 @@ interface HeroDetailProps {
 export function HeroDetail({ hero }: HeroDetailProps) {
   return (
     <div className="bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-4 py-2">
         <Link
           href={ROUTES.HOME}
           className="text-foreground-muted hover:text-foreground w-fit text-sm transition-colors"
@@ -25,8 +25,8 @@ export function HeroDetail({ hero }: HeroDetailProps) {
           <h1 className="text-foreground text-2xl font-bold">{hero.name} details</h1>
         </div>
 
-        <Card className="mx-auto max-w-md overflow-hidden">
-          <div className="relative h-96 w-full">
+        <Card className="max-w-2xl overflow-hidden">
+          <div className="relative h-96 w-full sm:h-150 md:h-180">
             <Image
               src={hero.image}
               alt={hero.name}

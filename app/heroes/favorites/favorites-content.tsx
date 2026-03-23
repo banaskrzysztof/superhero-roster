@@ -43,7 +43,7 @@ export function FavoritesContent({ allHeroes, filters }: FavoritesContentProps) 
 
   return (
     <div className="bg-background min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-4 py-2">
         <Link
           href={ROUTES.HOME}
           className="text-foreground-muted hover:text-foreground w-fit text-sm transition-colors"
