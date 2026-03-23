@@ -1,14 +1,20 @@
 'use client'
 
-import { POWER_TYPES, UNIVERSES } from '@/types/hero'
+import { POWER_TYPES, UNIVERSES, type PowerType, type Universe } from '@/types/hero'
 import { useQueryParams } from '@/hooks/use-query-params'
 
-export function FilterPanel() {
-  const { searchParams, setParam, clearAll } = useQueryParams()
+interface FilterParams extends Record<string, unknown> {
+  q?: string
+  universe?: Universe
+  power?: PowerType
+}
 
-  const activeUniverse = searchParams.get('universe')
-  const activePower = searchParams.get('power')
-  const hasFilters = searchParams.toString() !== ''
+export function FilterPanel() {
+  const { queryParam, getQueryParam, setQueryParam, clearAll } = useQueryParams<FilterParams>()
+
+  const activeUniverse = getQueryParam('universe')
+  const activePower = getQueryParam('power')
+  const hasFilters = queryParam.toString() !== ''
 
   const buttonClass = (active: boolean) =>
     `cursor-pointer rounded-full border px-3 py-1 text-xs font-medium transition-all hover:scale-105 ${
@@ -25,7 +31,7 @@ export function FilterPanel() {
           {UNIVERSES.map((u) => (
             <button
               key={u}
-              onClick={() => setParam('universe', u)}
+              onClick={() => setQueryParam('universe', u)}
               className={buttonClass(activeUniverse === u)}
             >
               {u}
@@ -40,7 +46,7 @@ export function FilterPanel() {
           {POWER_TYPES.map((p) => (
             <button
               key={p}
-              onClick={() => setParam('power', p)}
+              onClick={() => setQueryParam('power', p)}
               className={buttonClass(activePower === p)}
             >
               {p}

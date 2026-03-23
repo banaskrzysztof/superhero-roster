@@ -16,11 +16,13 @@ export function HeroCard({ hero }: HeroCardProps) {
       <Link href={ROUTES.HERO(hero.slug)}>
         <div className="relative h-48 w-full">
           <Image
+            loading="eager"
+            fetchPriority="high"
             src={hero.image}
             alt={hero.name}
             fill
             className="object-cover object-[center_25%]"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
           />
         </div>
         <div className="flex flex-col gap-2 p-4">

@@ -8,15 +8,12 @@ export function Sidebar() {
         <h2 className="text-foreground mb-4 text-lg font-semibold">Search & Filters</h2>
 
         <div className="space-y-6">
-          {/* Search */}
           <div>
             <label className="text-foreground-muted mb-2 block text-xs font-medium uppercase">
               Search
             </label>
             <SearchBar />
           </div>
-
-          {/* Filters */}
           <div>
             <label className="text-foreground-muted mb-3 block text-xs font-medium uppercase">
               Filters

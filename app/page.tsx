@@ -28,9 +28,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         </p>
 
         <div className="flex flex-col gap-6 lg:flex-row">
-          {/* Sidebar */}
           <Sidebar />
-
           <div className="min-w-0 flex-1">
             <HeroGrid heroes={filtered} />
           </div>

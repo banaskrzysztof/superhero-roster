@@ -12,7 +12,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Speed', 'Intelligence'],
     description:
       'A billionaire vigilante who uses his intellect and physical prowess to fight crime in Gotham City.',
-    image: '/batman.png',
+    image: '/batman.webp',
   },
   {
     slug: 'joker',
@@ -24,7 +24,7 @@ export const heroesData: Hero[] = [
     powers: ['Intelligence'],
     description:
       "Batman's greatest nemesis — a psychopathic criminal mastermind with a warped sense of humor.",
-    image: '/joker.png',
+    image: '/joker.webp',
   },
   {
     slug: 'superman',
@@ -37,7 +37,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Speed'],
     description:
       "The last survivor of Krypton, blessed with extraordinary powers under Earth's yellow sun.",
-    image: '/superman.png',
+    image: '/superman.webp',
   },
   {
     slug: 'gamora',
@@ -49,7 +49,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Speed'],
     description:
       'Adopted daughter of Thanos, turned guardian of the galaxy and fierce warrior for good.',
-    image: '/gamora.png',
+    image: '/gamora.webp',
   },
   {
     slug: 'thanos',
@@ -61,7 +61,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Intelligence', 'Magic'],
     description:
       'A powerful cosmic warlord obsessed with balance, willing to destroy half of all life to achieve it.',
-    image: '/thanos.png',
+    image: '/thanos.webp',
   },
   {
     slug: 'wonder-woman',
@@ -73,7 +73,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Speed', 'Magic'],
     description:
       'An Amazonian warrior princess who fights for justice, love, and peace across the world.',
-    image: '/wonder-woman.png',
+    image: '/wonder-woman.webp',
   },
   {
     slug: 'lex-luthor',
@@ -85,7 +85,7 @@ export const heroesData: Hero[] = [
     powers: ['Intelligence'],
     description:
       "A ruthless billionaire genius and Superman's greatest adversary, driven by ego and ambition.",
-    image: '/lex-luthor.png',
+    image: '/lex-luthor.webp',
   },
   {
     slug: 'aquaman',
@@ -97,7 +97,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Speed'],
     description:
       'The ruler of Atlantis with the ability to communicate with sea life and survive extreme depths.',
-    image: '/aquaman.png',
+    image: '/aquaman.webp',
   },
   {
     slug: 'thor',
@@ -109,7 +109,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Magic'],
     description:
       'The Asgardian god of thunder, wielder of Mjolnir and protector of both Asgard and Earth.',
-    image: '/thor.png',
+    image: '/thor.webp',
   },
   {
     slug: 'spiderman',
@@ -121,7 +121,7 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Speed', 'Intelligence'],
     description:
       'A young scientist bitten by a radioactive spider, balancing everyday life with saving New York City.',
-    image: '/spiderman.png',
+    image: '/spiderman.webp',
   },
   {
     slug: 'harley-quinn',
@@ -133,6 +133,6 @@ export const heroesData: Hero[] = [
     powers: ['Strength', 'Intelligence'],
     description:
       'A former psychiatrist turned chaotic villain, known for her unpredictability and loyalty to Joker.',
-    image: '/harley-quinn.png',
+    image: '/harley-quinn.webp',
   },
 ]

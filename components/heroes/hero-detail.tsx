@@ -9,7 +9,6 @@ import type { Hero } from '@/types/hero'
 interface HeroDetailProps {
   hero: Hero
 }
-
 export function HeroDetail({ hero }: HeroDetailProps) {
   return (
     <div className="bg-background">
@@ -25,19 +24,20 @@ export function HeroDetail({ hero }: HeroDetailProps) {
           <h1 className="text-foreground text-2xl font-bold">{hero.name} details</h1>
         </div>
 
-        <Card className="max-w-2xl overflow-hidden">
-          <div className="relative h-96 w-full sm:h-150 md:h-180">
+        <Card className="max-h-screen max-w-2xl self-start overflow-hidden">
+          <div className="relative h-96 max-h-[40vh] sm:h-128">
             <Image
+              loading="eager"
+              fetchPriority="high"
               src={hero.image}
               alt={hero.name}
               fill
-              sizes="(max-width: 768px) 100vw, 448px"
-              className="rounded-t-lg object-cover object-top"
-              priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+              className="rounded-t-lg object-cover object-[center_25%]"
             />
           </div>
 
-          <div className="flex flex-col gap-4 p-6">
+          <div className="flex h-auto flex-col gap-4 overflow-y-auto p-6">
             <div className="flex items-start justify-between gap-4">
               <div className="flex flex-col gap-1">
                 <h1 className="text-foreground text-3xl font-bold">{hero.name}</h1>
@@ -50,9 +50,7 @@ export function HeroDetail({ hero }: HeroDetailProps) {
                 <FavoriteButton slug={hero.slug} />
               </div>
             </div>
-
             <p className="text-foreground leading-relaxed">{hero.description}</p>
-
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex flex-col gap-1">
                 <span className="text-foreground-muted text-xs font-medium tracking-wide uppercase">

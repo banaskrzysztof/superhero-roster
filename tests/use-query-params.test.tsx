@@ -8,6 +8,12 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(),
 }))
 
+interface TestParams extends Record<string, unknown> {
+  universe?: string
+  power?: string
+  q?: string
+}
+
 describe('useQueryParams', () => {
   const mockReplace = jest.fn()
 
@@ -18,15 +24,24 @@ describe('useQueryParams', () => {
     ;(usePathname as jest.Mock).mockReturnValue('/test-path')
   })
 
-  it('should return searchParams', () => {
-    const { result } = renderHook(() => useQueryParams())
-    expect(result.current.searchParams).toBeInstanceOf(URLSearchParams)
+  it('should return queryParam', () => {
+    const { result } = renderHook(() => useQueryParams<TestParams>())
+    expect(result.current.queryParam).toBeInstanceOf(URLSearchParams)
+  })
+
+  it('should get a query param', () => {
+    const params = new URLSearchParams('universe=Marvel')
+    ;(useSearchParams as jest.Mock).mockReturnValue(params)
+    const { result } = renderHook(() => useQueryParams<TestParams>())
+
+    expect(result.current.getQueryParam('universe')).toBe('Marvel')
+    expect(result.current.getQueryParam('power')).toBeUndefined()
   })
 
   it('should set a param', () => {
-    const { result } = renderHook(() => useQueryParams())
+    const { result } = renderHook(() => useQueryParams<TestParams>())
 
-    result.current.setParam('universe', 'Marvel')
+    result.current.setQueryParam('universe', 'Marvel')
 
     expect(mockReplace).toHaveBeenCalledWith('/test-path?universe=Marvel', { scroll: false })
   })
@@ -34,9 +49,9 @@ describe('useQueryParams', () => {
   it('should toggle param when setting same value', () => {
     const params = new URLSearchParams('universe=Marvel')
     ;(useSearchParams as jest.Mock).mockReturnValue(params)
-    const { result } = renderHook(() => useQueryParams())
+    const { result } = renderHook(() => useQueryParams<TestParams>())
 
-    result.current.setParam('universe', 'Marvel')
+    result.current.setQueryParam('universe', 'Marvel')
 
     expect(mockReplace).toHaveBeenCalledWith('/test-path?', { scroll: false })
   })
@@ -44,9 +59,9 @@ describe('useQueryParams', () => {
   it('should update param', () => {
     const params = new URLSearchParams()
     ;(useSearchParams as jest.Mock).mockReturnValue(params)
-    const { result } = renderHook(() => useQueryParams())
+    const { result } = renderHook(() => useQueryParams<TestParams>())
 
-    result.current.updateParam('q', 'batman')
+    result.current.updateQueryParam('q', 'batman')
 
     expect(mockReplace).toHaveBeenCalledWith('/test-path?q=batman', { scroll: false })
   })
@@ -54,9 +69,9 @@ describe('useQueryParams', () => {
   it('should delete param when updating with empty value', () => {
     const params = new URLSearchParams('q=batman')
     ;(useSearchParams as jest.Mock).mockReturnValue(params)
-    const { result } = renderHook(() => useQueryParams())
+    const { result } = renderHook(() => useQueryParams<TestParams>())
 
-    result.current.updateParam('q', '')
+    result.current.updateQueryParam('q', '')
 
     expect(mockReplace).toHaveBeenCalledWith('/test-path?', { scroll: false })
   })
@@ -64,7 +79,7 @@ describe('useQueryParams', () => {
   it('should clear all params', () => {
     const params = new URLSearchParams('universe=Marvel&power=Strength')
     ;(useSearchParams as jest.Mock).mockReturnValue(params)
-    const { result } = renderHook(() => useQueryParams())
+    const { result } = renderHook(() => useQueryParams<TestParams>())
 
     result.current.clearAll()
 

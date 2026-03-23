@@ -219,13 +219,6 @@ The project uses Next.js API routes to mock an external backend:
 - Server-side filtering for SEO
 - Debounced search (300ms) prevents excessive re-renders
 
-**Implementation**:
-
-```typescript
-// Custom hook centralizes URL param logic
-const { setParam, updateParam, clearAll } = useQueryParams()
-```
-
 ### 4. Error Handling
 
 **Choice**: Next.js error boundaries at multiple levels
@@ -253,7 +246,7 @@ const { setParam, updateParam, clearAll } = useQueryParams()
 - ✅ Utility function tests
 - ✅ Custom hook tests
 
-**Total**: 44 tests across 7 test suites
+**Total**: 45 tests across 7 test suites
 
 ## Performance Optimizations
 
