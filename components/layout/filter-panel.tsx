@@ -18,37 +18,41 @@ export function FilterPanel() {
     }`
 
   return (
-    <div className="flex flex-wrap items-center gap-4">
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-foreground text-xs font-medium">Universe</span>
-        {UNIVERSES.map((u) => (
-          <button
-            key={u}
-            onClick={() => setParam('universe', u)}
-            className={buttonClass(activeUniverse === u)}
-          >
-            {u}
-          </button>
-        ))}
+    <div className="space-y-4">
+      <div>
+        <span className="text-foreground mb-2 block text-sm font-medium">Universe</span>
+        <div className="flex flex-wrap gap-2">
+          {UNIVERSES.map((u) => (
+            <button
+              key={u}
+              onClick={() => setParam('universe', u)}
+              className={buttonClass(activeUniverse === u)}
+            >
+              {u}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-foreground text-xs font-medium">Power</span>
-        {POWER_TYPES.map((p) => (
-          <button
-            key={p}
-            onClick={() => setParam('power', p)}
-            className={buttonClass(activePower === p)}
-          >
-            {p}
-          </button>
-        ))}
+      <div>
+        <span className="text-foreground mb-2 block text-sm font-medium">Power</span>
+        <div className="flex flex-wrap gap-2">
+          {POWER_TYPES.map((p) => (
+            <button
+              key={p}
+              onClick={() => setParam('power', p)}
+              className={buttonClass(activePower === p)}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
       </div>
 
       {hasFilters && (
         <button
           onClick={clearAll}
-          className="text-foreground-muted hover:text-foreground cursor-pointer text-xs underline underline-offset-2 transition-colors"
+          className="text-foreground-muted hover:text-foreground border-border w-full cursor-pointer rounded-md border py-2 text-xs transition-colors"
         >
           Clear filters and search
         </button>

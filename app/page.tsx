@@ -1,44 +1,41 @@
-import { Suspense } from 'react'
 import { HeroGrid } from '@/components/heroes/hero-grid'
-import { SearchBar } from '@/components/layout/search-bar'
-import { FilterPanel } from '@/components/layout/filter-panel'
+import { Sidebar } from '@/components/layout/sidebar'
 import { getHeroes } from '@/utils/heroes'
-import type { Universe, PowerType } from '@/types/hero'
+import { validateSearchParams } from '@/utils/validate-params'
+
+export const revalidate = 3600
 
 interface HomePageProps {
   searchParams: Promise<{ q?: string; universe?: string; power?: string }>
 }
 
 export default async function HomePage({ searchParams }: HomePageProps) {
-  const { q, universe, power } = await searchParams
+  const params = await searchParams
+  const { q, universe, power } = validateSearchParams(params)
   const heroes = await getHeroes()
 
   const filtered = heroes.filter((hero) => {
     if (q && !hero.name.toLowerCase().includes(q.toLowerCase())) return false
-    if (universe && hero.universe !== (universe as Universe)) return false
-    return !(power && !hero.powers.includes(power as PowerType))
+    if (universe && hero.universe !== universe) return false
+    return !(power && !hero.powers.includes(power))
   })
 
   return (
-    <main className="bg-background">
-      <section className="mx-auto max-w-7xl px-4 py-8">
+    <main className="bg-background min-h-screen">
+      <div className="mx-auto max-w-7xl px-4 py-8">
         <p className="text-foreground-muted mb-6">
           Browse and filter your favourite heroes and villains
         </p>
-        <div className="mb-4">
-          <Suspense
-            fallback={<div className="bg-background-subtle h-9 w-full max-w-sm rounded-md" />}
-          >
-            <SearchBar />
-          </Suspense>
+
+        <div className="flex flex-col gap-6 lg:flex-row">
+          {/* Sidebar */}
+          <Sidebar />
+
+          <div className="min-w-0 flex-1">
+            <HeroGrid heroes={filtered} />
+          </div>
         </div>
-        <div className="mb-6">
-          <Suspense fallback={<div className="bg-background-subtle h-8 w-full rounded-full" />}>
-            <FilterPanel />
-          </Suspense>
-        </div>
-        <HeroGrid heroes={filtered} />
-      </section>
+      </div>
     </main>
   )
 }

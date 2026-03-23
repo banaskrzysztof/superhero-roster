@@ -1,7 +1,6 @@
 'use client'
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation'
-import { useCallback } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 import SearchIcon from '@/assets/icons/search.svg'
 import { Input } from '@/components/ui/input'
@@ -11,30 +10,25 @@ export function SearchBar() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const handleChange = useDebouncedCallback(
-    useCallback(
-      (value: string) => {
-        const params = new URLSearchParams(searchParams.toString())
-        if (value) {
-          params.set('q', value)
-        } else {
-          params.delete('q')
-        }
-        router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-      },
-      [router, pathname, searchParams],
-    ),
-    300,
-  )
+  const handleChange = useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    if (value) {
+      params.set('q', value)
+    } else {
+      params.delete('q')
+    }
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+  }, 300)
 
   return (
-    <div className="relative w-full max-w-sm">
+    <div className="relative w-full">
       <SearchIcon
         width={16}
         height={16}
         className="text-foreground-muted absolute top-1/2 left-3 -translate-y-1/2"
       />
       <Input
+        key={searchParams.get('q') || 'empty'}
         type="search"
         defaultValue={searchParams.get('q') ?? ''}
         onChange={(e) => handleChange(e.target.value)}

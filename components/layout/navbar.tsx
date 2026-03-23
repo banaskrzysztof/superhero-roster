@@ -9,17 +9,19 @@ export function Navbar() {
       <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
         <Link
           href={ROUTES.HOME}
-          className="text-foreground hover:text-brand-primary text-lg font-bold transition-colors"
+          className="text-foreground hover:text-brand-primary truncate text-lg font-bold transition-colors"
         >
-          Superhero Roster
+          <span className="hidden sm:inline">Superhero Roster</span>
+          <span className="sm:hidden">Heroes</span>
         </Link>
         <div className="flex items-center gap-2">
           <Link
             href={ROUTES.FAVORITES}
             className="text-foreground-muted hover:bg-background-subtle hover:text-foreground flex items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors"
+            aria-label="Favorites"
           >
             <HeartIcon width={16} height={16} />
-            <span>Favorites</span>
+            <span className="hidden sm:inline">Favorites</span>
           </Link>
           <ThemeToggle />
         </div>

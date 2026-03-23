@@ -1,20 +1,23 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { POWER_TYPES, UNIVERSES } from '@/types/hero'
 import { FilterPanel } from '@/components/layout/filter-panel'
-
-const mockReplace = jest.fn()
-const mockSearchParams = new URLSearchParams()
+import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 
 jest.mock('next/navigation', () => ({
-  useRouter: () => ({ replace: mockReplace }),
-  usePathname: () => '/',
-  useSearchParams: () => mockSearchParams,
+  useRouter: jest.fn(),
+  useSearchParams: jest.fn(),
+  usePathname: jest.fn(),
 }))
 
 describe('FilterPanel', () => {
+  const mockReplace = jest.fn()
+
   beforeEach(() => {
-    mockReplace.mockClear()
-    mockSearchParams.forEach((_, key) => mockSearchParams.delete(key))
+    jest.clearAllMocks()
+    ;(useRouter as jest.Mock).mockReturnValue({ replace: mockReplace })
+    ;(useSearchParams as jest.Mock).mockReturnValue(new URLSearchParams())
+    ;(usePathname as jest.Mock).mockReturnValue('/')
   })
 
   it('renders all universe buttons', () => {
@@ -27,15 +30,17 @@ describe('FilterPanel', () => {
     POWER_TYPES.forEach((p) => expect(screen.getByText(p)).toBeInTheDocument())
   })
 
-  it('calls router.replace with correct param on universe click', () => {
+  it('calls router.replace with correct param on universe click', async () => {
+    const user = userEvent.setup()
     render(<FilterPanel />)
-    fireEvent.click(screen.getByText(UNIVERSES[0]))
+    await user.click(screen.getByText(UNIVERSES[0]))
     expect(mockReplace).toHaveBeenCalledWith(`/?universe=${UNIVERSES[0]}`, { scroll: false })
   })
 
-  it('calls router.replace with correct param on power click', () => {
+  it('calls router.replace with correct param on power click', async () => {
+    const user = userEvent.setup()
     render(<FilterPanel />)
-    fireEvent.click(screen.getByText(POWER_TYPES[0]))
+    await user.click(screen.getByText(POWER_TYPES[0]))
     expect(mockReplace).toHaveBeenCalledWith(`/?power=${POWER_TYPES[0]}`, { scroll: false })
   })
 
@@ -45,22 +50,24 @@ describe('FilterPanel', () => {
   })
 
   it('shows clear button when filters are active', () => {
-    mockSearchParams.set('universe', UNIVERSES[0])
+    ;(useSearchParams as jest.Mock).mockReturnValue(new URLSearchParams('universe=' + UNIVERSES[0]))
     render(<FilterPanel />)
     expect(screen.getByText(/clear filters/i)).toBeInTheDocument()
   })
 
-  it('clears filters on clear button click', () => {
-    mockSearchParams.set('universe', UNIVERSES[0])
+  it('clears filters on clear button click', async () => {
+    const user = userEvent.setup()
+    ;(useSearchParams as jest.Mock).mockReturnValue(new URLSearchParams('universe=' + UNIVERSES[0]))
     render(<FilterPanel />)
-    fireEvent.click(screen.getByText(/clear filters/i))
+    await user.click(screen.getByText(/clear filters/i))
     expect(mockReplace).toHaveBeenCalledWith('/', { scroll: false })
   })
 
-  it('removes param when clicking already active filter', () => {
-    mockSearchParams.set('universe', UNIVERSES[0])
+  it('removes param when clicking already active filter', async () => {
+    const user = userEvent.setup()
+    ;(useSearchParams as jest.Mock).mockReturnValue(new URLSearchParams('universe=' + UNIVERSES[0]))
     render(<FilterPanel />)
-    fireEvent.click(screen.getByText(UNIVERSES[0]))
+    await user.click(screen.getByText(UNIVERSES[0]))
     expect(mockReplace).toHaveBeenCalledWith('/?', { scroll: false })
   })
 })

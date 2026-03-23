@@ -12,8 +12,8 @@ interface HeroDetailProps {
 
 export function HeroDetail({ hero }: HeroDetailProps) {
   return (
-    <main className="bg-background">
-      <section className="mx-auto max-w-7xl px-4 py-8">
+    <div className="bg-background">
+      <div className="mx-auto max-w-7xl px-4 py-8">
         <Link
           href={ROUTES.HOME}
           className="text-foreground-muted hover:text-foreground w-fit text-sm transition-colors"
@@ -26,12 +26,13 @@ export function HeroDetail({ hero }: HeroDetailProps) {
         </div>
 
         <Card className="mx-auto max-w-md overflow-hidden">
-          <div className="relative h-200 w-full">
+          <div className="relative h-96 w-full">
             <Image
               src={hero.image}
               alt={hero.name}
               fill
-              className="rounded-t-[--radius-lg] object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 448px"
+              className="rounded-t-lg object-cover object-top"
               priority
             />
           </div>
@@ -91,7 +92,7 @@ export function HeroDetail({ hero }: HeroDetailProps) {
             </div>
           </div>
         </Card>
-      </section>
-    </main>
+      </div>
+    </div>
   )
 }

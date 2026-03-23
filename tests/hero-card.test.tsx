@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { HeroCard } from '@/components/heroes/hero-card'
 import type { Hero } from '@/types/hero'
+import type { ReactNode } from 'react'
 
 jest.mock('next/image', () => ({
   __esModule: true,
@@ -10,7 +11,7 @@ jest.mock('next/image', () => ({
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: ({ children, href }: { children: React.ReactNode; href: string }) => (
+  default: ({ children, href }: { children: ReactNode; href: string }) => (
     <a href={href}>{children}</a>
   ),
 }))
@@ -28,7 +29,7 @@ const hero: Hero = {
   score: 95,
   powers: ['Strength', 'Speed'],
   weakness: 'Ethyl chloride',
-  image: '/spider-man.svg',
+  image: '/spiderman.png',
   description: 'Friendly neighbourhood Spider-Man',
 }
 

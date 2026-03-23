@@ -46,7 +46,7 @@ cd superhero-roster
 npm install
 ```
 
-3. Create environment file:
+3. Create an environment file:
 
 ```bash
 cp .env.local
@@ -127,7 +127,7 @@ export async function generateStaticParams() {
 - Hero list can be updated without full rebuild
 - Balances static performance with data freshness
 - Revalidates every 3600 seconds (1 hour)
-- First user gets cached page, background revalidation happens
+- The first user gets cached page, background revalidation happens
 
 **Implementation**:
 
@@ -137,7 +137,7 @@ export async function generateStaticParams() {
 
 **Why**:
 
-- Zero JavaScript shipped to client for data fetching
+- Zero JavaScript shipped to a client for data fetching
 - Better security (API keys, database queries stay on server)
 - Reduced bundle size
 - Automatic request deduplication
@@ -145,7 +145,7 @@ export async function generateStaticParams() {
 **Examples**:
 
 - `app/page.tsx` - Home page with server-side filtering
-- `app/heroes/favorites/page.tsx` - Fetches all heroes on server, filters on client
+- `app/heroes/favorites/page.tsx` - Fetches all heroes on server, filters on a client
 - `app/layout.tsx` - Root layout
 
 ### Client Components
@@ -166,7 +166,7 @@ export async function generateStaticParams() {
 
 1. Server Component fetches all hero data (fast, SEO-friendly)
 2. Client Component filters based on localStorage favorites
-3. Best of both worlds: initial HTML + reactive filtering
+3. Best of both worlds: initial HTML and reactive filtering
 
 ## API Routes
 
@@ -174,7 +174,7 @@ The project uses Next.js API routes to mock an external backend:
 
 **Why API routes instead of direct imports?**
 
-- Simulates real-world scenario where frontend consumes external API
+- Simulates a real-world scenario where frontend consumes external API
 - Easy to swap with actual backend (just change `NEXT_PUBLIC_API_URL`)
 - Consistent HTTP-based data fetching throughout the app
 - Enables testing of error handling, loading states, and retry logic

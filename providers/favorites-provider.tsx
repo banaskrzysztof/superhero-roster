@@ -17,7 +17,7 @@ function getSnapshot(): string[] {
 
     if (
       parsed.length === cachedSnapshot.length &&
-      parsed.every((s, i) => s === cachedSnapshot[i])
+      parsed.every((slug, index) => slug === cachedSnapshot[index])
     ) {
       return cachedSnapshot
     }
@@ -53,10 +53,10 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   const toggleFavorite = useCallback(
     (slug: string) => {
       try {
-        const next = favorites.includes(slug)
-          ? favorites.filter((s) => s !== slug)
+        const updatedFavorites = favorites.includes(slug)
+          ? favorites.filter((favoriteSlug) => favoriteSlug !== slug)
           : [...favorites, slug]
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedFavorites))
         window.dispatchEvent(new Event('storage'))
       } catch (error) {
         console.error('Failed to save favorites to localStorage:', error)
@@ -67,7 +67,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, isFavorite: (s) => favorites.includes(s), toggleFavorite }}
+      value={{ favorites, isFavorite: (slug) => favorites.includes(slug), toggleFavorite }}
     >
       {children}
     </FavoritesContext.Provider>
